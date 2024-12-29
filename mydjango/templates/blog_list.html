@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-section h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2b2b2b;
+            text-align: center;
+        }
+
+        .blog-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .blog-item {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-item h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .blog-item p {
+            font-size: 16px;
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+
+        .blog-item small {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-section {
+                padding: 20px;
+            }
+
+            .blog-item h2 {
+                font-size: 22px;
+            }
+
+            .blog-item p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Blog List Section -->
+    <section class="blog-section">
+        <h1>Latest Blog Posts</h1>
+        <ul class="blog-list">
+            {% for post in blog_posts %}
+                <li class="blog-item">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content|safe }}</p>
+                    <small>Created on: {{ post.created_at }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</body>
+</html>
